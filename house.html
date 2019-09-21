@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+
+  <!--My Styles-->
+  <link rel='stylesheet' type='text/css' href='./styles/styles.css'>
+</head>
+
+<body>
+
+  <!--Table container-->
+  <div>
+    <div class='row border bg-light'>
+      <div id='roles' class='col-sm-8'>
+        <label>Filter by role:</label>
+      </div>
+      <div class='col-sm-4 text-right'>
+        <label class='font-weight-bold'>Filter by state:</label>
+        <input type='text' id='name-filter' onkeyup='filterMembers()' placeholder='Search for names or nicknames...'>
+      </div>
+    </div>
+
+    <div class='row'>
+      <table class='table table-hover'>
+        <thead class='thead-light'>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Role</th>
+            <th>Team</th>
+            <th>Seniority</th>
+            <th>Contact Info</th>
+          </tr>
+        </thead>
+        <tbody id='data'>
+        </tbody>
+      </table>
+    </div>
+
+    <div class='row'>
+      <div class='col-sm-12 card-footer text-muted border text-center'>
+        © TGIF 2016 | All rights Reserved
+      </div>
+    </div>
+  </div>
+
+  <!--My Scripts-->
+  <script src='./scripts/house-senate-script.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+Use this url https://api.myjson.com/bins/adpvt to make an AJAX call to get the data.
+
+With this data you should do the following:
+
+Create a table with a row for each person.
+
+Each person property should be in a different cell, except for the 'Contact info' property.
+
+There should also be another cell which will include a button with the text 'More info'.
+
+Everytime we click this button, you should create a Modal that will show the information on the 'Contact info' object, including the photo.
+
+Each modal must include a button to close it and a field with 'Send an email'. If the person doesn't have an email address, instead of 'Send an email' it will show 'We don't have any contact info'. 
+
+Also you should implement filters for the table info: Search by Name or NickName, checkboxes for the different roles and order by age ASC or DESC. The table should adapt to the new filtered information.
+
+
+Terms :
+
+No JQuery. If you use Bootstrap Modals, you can use JQuery to active them with .modal('show'), but nothing else.
+
+You shouldn't use Bootstrap.
+
+You should use Flexbox.
+
+You should use Vanilla JavaScript.
+
+No HTML, apart from the Table Headers and Modal structure.
+
+Modals should be filled dynamically from JS, depending on the button clicked.
+
+
+Interface should be 'pretty'!!
+
+Here is a video with an example, make sure to create your own style though:
+
+Video
+
+https://drive.google.com/file/d/1w22aw9SgdpannLvcb2dcvusOHVbDrmMy/view?usp=sharing
+
+P.S. The video doesn't include the filter features, but they are mandatory.
+
+--
+
+Decisions made:
+
+- Considering I cannot use HTML except for the table headers, I've decided to create the checkboxes dynamically, creating and array to create the event listeners afterwards.

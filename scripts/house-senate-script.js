@@ -1,11 +1,6 @@
 let members;
 let URL = 'https://api.myjson.com/bins/adpvt';
 
-let repCheckbox = document.getElementById('CTOCheckbox');
-let demCheckbox = document.getElementById('dem-checkbox');
-let indCheckbox = document.getElementById('ind-checkbox');
-let stateDropdown = document.getElementById('states');
-let readMoreButton = document.getElementById('more-button');
 let rolesArray = [];
 
 fetch(URL)
@@ -32,12 +27,12 @@ function createTable(data) {
 
   for (let i = 0; i < data.length; i++) {
     template += `<tr>
-    <td>${data[i].name}</td>
+    <td class='bold'>${data[i].name}</td>
     <td>${data[i].age}</td>
     <td>${data[i].role}</td>
     <td>${data[i].team}</td>
-    <td>${data[i].seniority}</td>
-    <td>More Info</td>
+    <td class='extra-padding'>${data[i].seniority}</td>
+    <td class='more-info bold'>More Info</td>
     </tr>`;
   }
 
@@ -57,6 +52,8 @@ function filterMembers() {
     document.querySelectorAll("input[type=checkbox]:checked")
   ).map(c => c.value);
 
+  console.log(checkboxes);
+
   let filteredMembers = members.filter(m => {
     let roleFilter = checkboxes.includes(m.role) || checkboxes.length == 0;
     let nameFilter = m.name.toUpperCase().indexOf(textValue) > -1 || m.contact_info.nickName.toUpperCase().indexOf(textValue) > -1;
@@ -70,21 +67,20 @@ function createCheckboxes() {
   let roleCheckbox = document.getElementById('roles');
   let roles = Array.from(new Set(members.map(m => m.role).sort()));
 
+  let roleCheckboxes = '';
+
   for (let i = 0; i < roles.length; i++) {
 
-    let checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.name = roles[i];
-    checkbox.value = roles[i];
-    checkbox.id = roles[i] + 'Checkbox';
-    rolesArray.push(checkbox.id);
+    rolesArray.push(roles[i] + 'Checkbox');
 
-    let label = document.createElement('label')
-    label.htmlFor = roles[i];
-    label.appendChild(document.createTextNode(roles[i]));
+    let fullCheckbox = `
+    <div class='cb'>
+    <label><input type='checkbox' value='${roles[i]}' id='${roles[i] + 'Checkbox'}' name=${roles[i]}'> ${roles[i]}</label>
+    </div>`;
 
-    roleCheckbox.appendChild(checkbox);
-    roleCheckbox.appendChild(label);
+    roleCheckboxes += fullCheckbox;
 
   }
+
+  roleCheckbox.innerHTML = roleCheckboxes;
 }

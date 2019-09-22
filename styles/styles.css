@@ -10,6 +10,9 @@ body {
     padding-right: 4%;
     font-family: "Raleway";
     font-size: 16px;
+    max-width: 1136px;
+    margin-bottom: 80px;
+    margin: auto;
 }
 
 label {
@@ -21,7 +24,7 @@ table {
     margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
-    max-width: 1136px;
+    
 }
 
 a {
@@ -66,7 +69,7 @@ tr:nth-child(even) {
 }
 
 .footer {
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 0;
     left: 0;
@@ -85,15 +88,18 @@ tr:nth-child(even) {
   }
 
   .role-item {
-    width: 70%;
+    width: 80%;
     display: flex;
     flex-direction: column;
   }
 
   .name-item {
-    width: 30%;
+    min-width: 220px;
+    width: 20%;
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
   }
 
   .checkbox-container {
@@ -103,4 +109,8 @@ tr:nth-child(even) {
 
   .cb {
       width: 150px;
+  }
+
+  .more-margin {
+      margin-bottom: 12px;
   }

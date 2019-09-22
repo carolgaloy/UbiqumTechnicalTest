@@ -44,4 +44,9 @@ P.S. The video doesn't include the filter features, but they are mandatory.
 
 Decisions made:
 
-- Considering I cannot use HTML except for the table headers, I've decided to create the checkboxes dynamically, creating and array to create the event listeners afterwards.
+- Considering I cannot use HTML except for the table headers, I've decided to create the checkboxes dynamically. I've created an array with all the roles, and with them I've created the checkboxes and the variables
+for the eventlisteners. 
+
+- On the other hand, I've decided to write two additional lines in HTML for the filter labels, becasue I think that creating them with JS only complicated the JS but added no extra value to the test.
+
+- The name filter is not case sensitive. I think it's a scenario where people would prefer it that way (it's not as important as in other scenarios).

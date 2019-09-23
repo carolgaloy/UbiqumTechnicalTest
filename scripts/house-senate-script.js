@@ -16,6 +16,15 @@ fetch(URL)
     for (let i = 0; i < rolesArray.length; i++) {
       document.getElementById(rolesArray[i]).addEventListener('click', filterMembers);
     }
+    for (let i = 0; i < members.length; i++) {
+      document.getElementById('member' + i).addEventListener('click', function () { openModal(members, i) });
+    }
+
+
+
+
+
+
   })
   .catch(function (error) {
     console.log('Request failed: ' + error.message);
@@ -32,7 +41,7 @@ function createTable(data) {
     <td>${data[i].role}</td>
     <td>${data[i].team}</td>
     <td class='extra-padding'>${data[i].seniority}</td>
-    <td class='more-info bold'>More Info</td>
+    <td class='more-info bold'><button class='more-info bold' id=${'member' + i}>More Info</button></td>
     </tr>`;
   }
 
@@ -52,14 +61,16 @@ function filterMembers() {
     document.querySelectorAll("input[type=checkbox]:checked")
   ).map(c => c.value);
 
-  console.log(checkboxes);
-
   let filteredMembers = members.filter(m => {
     let roleFilter = checkboxes.includes(m.role) || checkboxes.length == 0;
     let nameFilter = m.name.toUpperCase().indexOf(textValue) > -1 || m.contact_info.nickName.toUpperCase().indexOf(textValue) > -1;
     return roleFilter && nameFilter;
   });
   createTable(filteredMembers);
+
+  for (let i = 0; i < filteredMembers.length; i++) {
+    document.getElementById('member' + i).addEventListener('click', function () { openModal(filteredMembers, i) });
+  }
 }
 
 function createCheckboxes() {
@@ -84,3 +95,78 @@ function createCheckboxes() {
 
   roleCheckbox.innerHTML = roleCheckboxes;
 }
+
+
+
+
+
+
+function openModal(members, id) {
+
+  let contact = members[id].contact_info;
+  // Get the modal
+  let modal = document.getElementById("contact-modal");
+
+  // Get the button that opens the modal
+  let btn = document.getElementById('member' + id);
+
+  console.log(btn);
+
+  // Get the <span> element that closes the modal
+  let span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on the button, open the modal
+  console.log(modal);
+
+  document.getElementById('name').innerText = members[id].name;
+
+  let email = '';
+
+  if (contact.email) {
+    email = `<button class='more-info bold' id=${'mail'}>Send me an email</button>`;
+  } else {
+    email = "We don't have any contact info";
+  }
+
+  let data = document.getElementById('contact-data');
+
+  data.innerHTML = `
+  <img class='profile' src=${contact.photo}>
+  <table>
+  <tbody>
+  <tr>
+    <td class='bold'>NickName</td>
+    <td>${contact.nickName}</td>
+    </tr>
+    <tr>
+    <td class='bold'>Phone</td>
+    <td>${contact.phone}</td>
+    </tr>
+    <tr>
+    <td class='bold'>Site</td>
+    <td>${contact.site}</td>
+    </tr>
+    <tr>
+    <td class='bold'>Contact</td>
+    <td>${email}</td>
+    </tr>
+  </tbody>`
+  let contactData = '';
+
+  modal.style.display = "block";
+
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+}
+
+

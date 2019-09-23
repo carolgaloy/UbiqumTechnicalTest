@@ -152,6 +152,7 @@ a {
   .modal-content {
     background-color: white;
     margin: 15% auto;
+    margin-top: 150px;
     padding: 20px;
     width: 300px;
     border-radius: 2%;

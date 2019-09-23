@@ -19,12 +19,6 @@ fetch(URL)
     for (let i = 0; i < members.length; i++) {
       document.getElementById('member' + i).addEventListener('click', function () { openModal(members, i) });
     }
-
-
-
-
-
-
   })
   .catch(function (error) {
     console.log('Request failed: ' + error.message);
@@ -66,6 +60,7 @@ function filterMembers() {
     let nameFilter = m.name.toUpperCase().indexOf(textValue) > -1 || m.contact_info.nickName.toUpperCase().indexOf(textValue) > -1;
     return roleFilter && nameFilter;
   });
+
   createTable(filteredMembers);
 
   for (let i = 0; i < filteredMembers.length; i++) {

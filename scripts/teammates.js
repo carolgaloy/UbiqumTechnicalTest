@@ -41,7 +41,7 @@ function createTable(data) {
     <td>${data[i].role}</td>
     <td>${data[i].team}</td>
     <td class='extra-padding'>${data[i].seniority}</td>
-    <td class='more-info bold'><button class='more-info bold' id=${'member' + i}>More Info</button></td>
+    <td class='more-info no-padding'><button class='more-info bold' id=${'member' + i}>More Info</button></td>
     </tr>`;
   }
 
@@ -58,7 +58,7 @@ function filterMembers() {
 
   let textValue = document.getElementById('name-filter').value.toUpperCase();
   let checkboxes = Array.from(
-    document.querySelectorAll("input[type=checkbox]:checked")
+    document.querySelectorAll('input[type=checkbox]:checked')
   ).map(c => c.value);
 
   let filteredMembers = members.filter(m => {
@@ -96,44 +96,27 @@ function createCheckboxes() {
   roleCheckbox.innerHTML = roleCheckboxes;
 }
 
-
-
-
-
-
 function openModal(members, id) {
 
   let contact = members[id].contact_info;
-  // Get the modal
-  let modal = document.getElementById("contact-modal");
-
-  // Get the button that opens the modal
-  let btn = document.getElementById('member' + id);
-
-  console.log(btn);
-
-  // Get the <span> element that closes the modal
-  let span = document.getElementsByClassName("close")[0];
-
-  // When the user clicks on the button, open the modal
-  console.log(modal);
+  let modal = document.getElementById('contact-modal');
+  let data = document.getElementById('contact-data');
+  let closeButton = document.getElementById('close-button');
 
   document.getElementById('name').innerText = members[id].name;
 
   let email = '';
 
   if (contact.email) {
-    email = `<button class='more-info bold' id=${'mail'}>Send me an email</button>`;
+    email = `<button class='more-info bold'><a href='mailto:${contact.email}'>Send me an email</a></button>`;
   } else {
     email = "We don't have any contact info";
   }
 
-  let data = document.getElementById('contact-data');
-
   data.innerHTML = `
   <img class='profile' src=${contact.photo}>
   <table>
-  <tbody>
+  <tbody class='white-table'>
   <tr>
     <td class='bold'>NickName</td>
     <td>${contact.nickName}</td>
@@ -148,25 +131,28 @@ function openModal(members, id) {
     </tr>
     <tr>
     <td class='bold'>Contact</td>
-    <td>${email}</td>
+    <td class='no-padding'>${email}</td>
     </tr>
   </tbody>`
-  let contactData = '';
 
-  modal.style.display = "block";
+  closeButton.innerHTML = `<button class='close-button more-info bold'>Close</button>`
 
+  modal.style.display = 'block';
 
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function () {
-    modal.style.display = "none";
-  }
+  document.getElementById('close-button').addEventListener('click', close);
+  document.getElementsByClassName('close')[0].addEventListener('click', close);
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+      modal.style.display = 'none';
     }
   }
+}
+
+function close() {
+  let modal = document.getElementById('contact-modal');
+  modal.style.display = 'none';
 }
 
 

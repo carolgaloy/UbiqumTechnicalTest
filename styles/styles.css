@@ -27,10 +27,6 @@ table {
     
 }
 
-a {
-    color: #004BCD
-}
-
 h2 {
     margin-top: 20px;
 }
@@ -41,7 +37,6 @@ thead {
 
 th, td {
     border-bottom: 1px solid #fde6e3;
-    border-right: 0px;
     padding: 12px;
 }
 
@@ -58,6 +53,8 @@ button {
     width: inherit;
     font-family: "Raleway";
     font-size: 16px;
+    cursor:pointer;
+    height: 40px;
 }
 
 h2 {
@@ -72,6 +69,11 @@ hr {
     height: 1px;
     width: 340px;
     margin-left: -20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .bold {
@@ -136,40 +138,27 @@ hr {
       margin-bottom: 12px;
   }
 
-
-
-
-
-
-
-
-  /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
   }
   
-  /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    background-color: white;
+    margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 300px; /* Could be more or less, depending on screen size */
+    width: 300px;
     border-radius: 2%;
   }
   
-  /* The Close Button */
   .close {
-    color: #aaa;
+    color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -190,3 +179,38 @@ hr {
     border-radius: 50%;
     margin-top: 20px;
   }
+
+  .close-button {
+      width: 80px;
+      height: 40px;
+  }
+
+  .close-div {
+    display:flex;
+    justify-content:flex-end;
+    align-items:center; 
+    padding-top: 12px;
+  }
+
+  .white-table > tr > td {
+    border-top: 1px solid #fde6e3;
+    border-bottom: 0;
+    padding: 12px;
+}
+
+.white-table > tr {
+    background-color: white;
+}
+
+.white-table > tr:hover {
+    background-color: #fcd0cd;
+}
+
+.white-table > tr > td.no-padding {
+    padding: 0;
+    padding-left: 12px;
+}
+
+.no-padding {
+    padding: 0;
+}
